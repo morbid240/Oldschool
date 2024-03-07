@@ -1,0 +1,92 @@
+// Malcolm Roddy
+// CS 41
+// 
+// 
+// This program implements a binary tree using an array, and prints in VLR pattern. 
+//
+
+#include <iostream>
+using namespace std;
+
+
+class BinTree
+{
+    double *array;
+    int count;
+    const int static Max = 10;
+public:
+    BinTree()
+    {
+        array = new double[Max];
+        count = 0;
+    }
+    void add(int x)
+    {
+        if (count < Max)
+        {
+            array[count] = x;
+            count++;
+        }
+        else
+        {
+            cout << "Error, array is full!";
+        }
+    }
+
+    void preorder(int i=0)
+    {
+        if (i < count)
+        {
+            cout << array[i] << " ";
+            preorder(2 * i + 1);
+            preorder(2 * i + 2);
+        }
+    }
+    void preorder(int i = 0)
+    {
+        if (i < count)
+        {
+            cout << array[i] << " ";
+            preorder(2 * i + 1);
+            preorder(2 * i + 2);
+        }
+    }
+    void postorder(int i = 0)
+    {
+        if (i < count)
+        {
+            postorder(2 * i + 1);
+            postorder(2 * i + 2);
+            cout << array[i] << " ";
+        }
+    }
+    void print()
+    {
+        for (int i = 0; i < count; i++)
+        {
+            if (array[i] != 0)
+                cout << array[i];
+            else 
+                cout<<"-";
+        }
+        cout << "\n";
+    }
+};
+
+
+int main()
+{
+    BinTree myArray;
+
+
+    myArray.add(1);
+    myArray.add(2);
+    myArray.add(3);
+    myArray.add(4);
+    myArray.add(5);
+    myArray.preorder();
+
+
+}
+
+

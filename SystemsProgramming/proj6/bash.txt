@@ -1,0 +1,2 @@
+#!/bin/bash
+./spellChecker american-english flatland.txt > words.out

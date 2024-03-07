@@ -1,0 +1,125 @@
+// Malcolm Roddy
+// CS 41
+// 
+// This program implements a binary tree search tree using linked lists and prints using inorder 
+// traversal
+
+#include <iostream>
+using namespace std;
+
+class Node
+{
+public:
+    double data;
+    Node* left, * right;
+    Node()
+    {
+        data = 0;
+        left = right = 0;
+    }
+    Node(int data, Node* l = 0, Node* r = 0)
+    {
+        this->data = data;
+        left = l;
+        right = r;
+    }
+};
+
+class BST
+{
+public:
+    Node* root;
+    BST()
+    {
+        root = 0;
+    }
+    //adds in sorted order
+    bool add(double data)
+    {
+        Node* newNode = new Node(data);
+        if (root == 0)
+        {
+            root = newNode;
+            return true;
+        }
+
+        Node* temp = root;
+        //temp node to traverse the list
+        while (true)
+        {
+            if (data < temp->data)
+            {
+                if (temp->left == 0)
+                {
+                    temp->left = newNode;
+                    break;
+                }
+                else
+                    temp = temp->left;
+            }
+            else if (data > temp->data)
+            {
+                if (temp->right == 0)
+                {
+                    temp->right = newNode;
+                    break;
+                }
+                else
+                {
+                    temp = temp->right;
+                }
+            }
+            else if (data == temp->data)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    void levelOrderTraversel(Node* root)
+    {
+        int level = 1;
+        while (printLevel(root, level))
+            cout<<"level: "<<++level<<" ";
+    }
+    bool printLevel(Node* root, int level)
+    {
+        if (root == NULL)
+            return false;
+        if (level == 1)
+        {
+            cout << root->data << " ";
+            return true;
+        }
+        bool left = printLevel(root->left, level - 1);
+        bool right = printLevel(root->right, level - 1);
+        return left || right;
+    }
+
+    void inorder(Node* temp)
+    {
+        if (temp != 0)
+        {
+            inorder(temp->left);
+            cout << temp->data << " ";
+            inorder(temp->right);
+        }
+    }
+};
+
+int main()
+{
+    BST myData;
+    myData.add(48);
+    myData.add(55);
+    myData.add(42);
+    myData.add(37);
+    myData.add(69);
+    myData.add(19);
+    myData.add(31);
+    myData.add(88);
+    myData.add(53);
+    cout << "Tree elements: " << endl;
+    myData.levelOrderTraversel(myData.root);
+    return 0;
+}

@@ -1,0 +1,38 @@
+{
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "$id" : "https://yourdomain.com/schema-url",
+  "title": "Troop",
+  "description" : "A troop containing scouts",
+  "type" : "object",
+  "properties": {
+    "TroopNumber" : {
+      "type" : "string" 
+    },
+    "foundingDate" : {
+      "type" : "date"
+    },
+    "community" : {
+      "type" : "string"
+    }
+  "Scout" : {
+	"title" : "Scout",
+	"type" : "array",
+	"items" : {
+		"type" : "object", 
+			"properties" : {
+		"firstName" : {
+			"type" : "string"
+		},
+		"lastName" : {
+			"type" : "string"
+		},
+		"birthday" : {
+			"type" : "date"
+		},
+		"gradeLevel" {
+			"type" : "string",
+			"enum" : ["K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
+		}
+  },
+  "required" : ["TroopNumber", "foundingDate", "community"]
+}

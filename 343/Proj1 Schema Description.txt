@@ -1,0 +1,23 @@
+﻿Malcolm Roddy
+CECS 323
+Project 1 Schema Description
+
+
+Troop
+A troop is a group containing scouts and adults. There can be many troops with each having many different scouts and adults. The troop receives payments from scouts, and troop allotments of various cookie types.
+
+
+Scout
+A scout is an individual that must be associated with at least one adult, and can only be in one troop. Without scouts the troop is empty and there is no point in receiving troop allotments in cookies. The scout is distinguished by first and last name as well as birthday. The scout also sends payment to the troop. 
+
+
+Adult 
+An adult must assume a role in order to be a part of a troop, and can take on many different roles in a troop as well as being a part of many different troops. An adult can also be associated with many different scouts. An adult is also distinguished by name and birthday. 
+
+
+Cookie Type 
+A cookie type distinguishes which cookie is being sold given by its name and price. The cookie type will relate with history between a troop and a troop allotment, as well as a scout and a scout allotment. These are separate relationships, since a troop and scout allotment are different types with different amounts of cookies held in each unit. There can be an infinite amount of cookie types for many different allotments both from scouts and troops. 
+
+
+Payment
+Payment is to keep track of revenue made from each scout. There can be many different payments from many different scouts. However each scout can only give their payment or payments to one troop, since they can only be associated with one troop.

@@ -1,0 +1,146 @@
+{
+  "_id": 1234,
+  "founding_date": {
+    "$date": "2022-09-01T00:00:00.000Z"
+  },
+  "community": "Long Beach",
+  "scouts": [
+    {
+	"_id": 1,
+      "firstname": "Naomi",
+      "lastname": "Nagata",
+      "birthday": {
+        "$date": "2017-03-03T00:00:00.000Z"
+      },
+      "gradelevel": "K",
+	"adults": [
+        {
+          "_id": {
+            "$oid": "e4fcf271-74aa-4146-8066-7926ad15e6c6"
+          }
+          "firstname": "James",
+          "lastname": "Holden",
+          "birthday": {
+            "$date": "1992-06-04T00:00:00.000Z"
+          },
+        }
+      ]
+    	},
+      "allotments": [
+        {
+          "date": {
+            "$date": "2023-01-19T00:00:00.000Z"
+          },
+          "cookies": [
+            {
+              "variety": "Thin Mints",
+              "quantity": 36
+            },
+            {
+              "variety": "Samoas",
+              "quantity": 36
+            },
+            {
+              "variety": "Tagalongs",
+              "quantity": 24
+            }
+          ]
+        }
+      ],
+      "payments": [
+        {
+          "date": {
+            "$date": "2023-03-01T00:00:00.000Z"
+          },
+          "amount": 540
+        },
+        {
+          "date": {
+            "$date": "2023-03-15T00:00:00.000Z"
+          },
+          "amount": 24
+        }
+      ]
+    },
+    {
+	"_id": 2,
+      "firstname": "Grace",
+      "lastname": "Hopper",
+      "birthday": {
+        "$date": "2017-01-30T00:00:00.000Z"
+      },
+      "gradelevel": "K",
+      "allotments": [
+        {
+          "date": {
+            "$date": "2023-01-19T00:00:00.000Z"
+          },
+          "cookies": [
+            {
+              "variety": "Thin Mints",
+              "quantity": 30
+            },
+            {
+              "variety": "Samoas",
+              "quantity": 20
+            },
+            {
+              "variety": "Tagalongs",
+              "quantity": 10
+            }
+          ]
+        }
+      ],
+      "payments": [
+        {
+          "date": {
+            "$date": "2023-02-01T00:00:00.000Z"
+          },
+          "amount": 360
+        }
+      ]
+    }
+  ],
+  "volunteers": [
+    {
+      "firstname": "James",
+      "lastname": "Holden",
+      "birthday": {
+        "$date": "1992-06-04T00:00:00.000Z"
+      },
+      "role": "Co-leader"
+    },
+    {
+      "firstname": "Ada",
+      "lastname": "Lovelace",
+      "birthday": {
+        "$date": "1990-10-10T00:00:00.000Z"
+      },
+      "role": [
+        "Treasurer",
+        "Cookie Chair"
+      ]
+    }
+  ],
+  "allotments": [
+    {
+      "date": {
+        "$date": "2023-01-18T00:00:00.000Z"
+      },
+      "cookies": [
+        {
+          "variety": "Thin Mints",
+          "quantity": 10
+        },
+        {
+          "variety": "Samoas",
+          "quantity": 10
+        },
+        {
+          "variety": "Tagalongs",
+          "quantity": 10
+        }
+      ]
+    }
+  ]
+}

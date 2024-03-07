@@ -1,0 +1,58 @@
+Malcolm Roddy 
+HW 6 practice makes perfect, pt. 1
+03/14/2023
+
+WHERE 
+2. 
+	select customername, creditlimit
+	from customers
+	where creditlimit = 0
+	order by customername
+4. 	select orderdate, status	
+	from orders
+	where orderdate between '2014-06-16' and '2014-07-07'
+6. 	select ordernumber, shippeddate, requireddate
+	from orders
+	where shippeddate > requireddate
+8. 	select productname
+	from products
+	where productvendor = 'Highway 66 Mini Classics'
+10.	select lastname, firstname
+	from employees
+	where reportsto is null
+
+
+INNER JOIN
+2. 	
+
+3.	select c.customername, c.state
+	from customers c
+	inner join offices o on c.state = o.state
+	order by c.customername
+4.	select amount
+	from payments
+	inner join customers on payments.customernumber = customers.customernumber
+	where payments.amount < 50000 and customers.country <> 'USA'
+5. 	select distinct o.ordernumber
+	from orders o
+	inner join orderdetails od on o.ordernumber = od.ordernumber
+	where quantityordered > 50
+
+MULTIPLE JOIN 
+1.	select c.customername, o.orderdate, od.quantityordered, p.productline, 	p.productname
+	from customers c
+	inner join orders o ON c.customernumber = o.customernumber
+	inner join orderdetails od ON o.ordernumber = od.ordernumber
+	inner join products p ON od.productcode = p.productcode
+	where c.customername LIKE '%Decorations%'
+	and extract(YEAR FROM o.orderdate) = 2015
+	and extract(MONTH FROM o.orderdate) % 2 = 1
+	order by c.customername, o.orderdate
+2. 	select distinct customername
+	from customers c
+	join employees e on c.state = (select state from offices where officecode = 	e.officecode)
+	join offices o on o.officecode = e.officecode
+	where o.state = c.state
+
+
+

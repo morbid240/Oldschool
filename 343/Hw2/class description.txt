@@ -1,0 +1,21 @@
+Malcolm Roddy
+02/07/2023
+CECS 343
+HW 2
+Class Descriptions of Strong Entities 
+
+
+Art Piece
+The art piece is what is housed in the museum. Many art pieces can be held at the museum. 
+Without the art pieces there is no point in visiting the museum so is the main point for the patron.
+
+
+Museum
+There can be many museums but an art piece can only be held at one museum at a time. 
+The museums attributes are distinguished by the name and location.
+
+
+Patron
+A patron is distinguished by name. A patron can give one rating to one art piece. There can be many 
+patrons who give one rating, or many visits to one museum. Must keep track of rating and person to make sure
+the art piece is associated with only one person, but can have multiple ratings from multiple patrons. 

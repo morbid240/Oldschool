@@ -1,0 +1,164 @@
+Malcolm Roddy 
+HW 7 practice makes perfect, pt. 2
+03/21/2023
+
+OUTER JOIN
+1. 
+	SELECT products.productname, products.productcode
+	FROM products
+	LEFT JOIN orderdetails ON products.productcode = orderdetails.productcode
+	WHERE orderdetails.ordernumber IS NULL
+2. 	
+
+	SELECT c.customerName,
+       COALESCE(e.firstName, 'N/A') AS salesRepFirstName,
+       COALESCE(e.lastName, 'N/A') AS salesRepLastName
+	FROM customers c
+	LEFT JOIN employees e ON c.salesRepEmployeeNumber = e.employeeNumber;
+
+AGGREGATE
+2.
+	SELECT MAX(amount) AS largestPayment
+	FROM payments
+4. 	
+	SELECT productLine, COUNT(*) AS numProducts
+	FROM products
+	GROUP BY productLine;
+6.
+	SELECT o.city, o.state, o.country, COUNT(*) AS numEmployees
+	FROM offices o
+	JOIN employees e ON o.officeCode = e.officeCode
+	GROUP BY o.city, o.state, o.country
+
+HAVING
+2. 	
+	SELECT orderdetails.ordernumber, SUM(orderdetails.quantityordered * 	orderdetails.priceeach) AS ordertotal
+	FROM orderdetails
+	JOIN orders ON orderdetails.ordernumber = orders.ordernumber
+	GROUP BY orderdetails.ordernumber
+	HAVING SUM(orderdetails.quantityordered * orderdetails.priceeach) > 60000.00
+
+
+COMPUTATION 
+2.
+	SELECT orderdetails.productcode, AVG(orderdetails.quantityordered * 	orderdetails.priceeach) AS avg_expenditure
+	FROM orderdetails
+	JOIN orders ON orderdetails.ordernumber = orders.ordernumber
+	WHERE orders.customernumber IN (
+  	SELECT customernumber FROM customers WHERE country = 'Japan'
+	)
+	GROUP BY orderdetails.productcode
+	ORDER BY avg_expenditure DESC
+
+4.
+	SELECT customers.customername,
+    	SUM(orderdetails.quantityordered * orderdetails.priceeach) AS 	total_order_value
+	FROM customers
+    	JOIN orders ON customers.customernumber = orders.customernumber
+    	JOIN orderdetails ON orders.ordernumber = orderdetails.ordernumber
+	GROUP BY
+    	customers.customername
+	HAVING
+    	SUM(orderdetails.quantityordered * orderdetails.priceeach) > 100000.00
+	ORDER BY
+    	total_order_value DESC
+
+
+SET OPERATION 
+1. 
+	SELECT customername
+	FROM customers
+	WHERE
+    	customernumber NOT IN (
+        SELECT
+            orders.customernumber
+        FROM
+            orders
+        WHERE
+            EXTRACT(YEAR FROM orderdate) = 2015
+    	)
+	ORDER BY
+    	customername
+
+SUBQUERY
+2. 
+	SELECT
+    	productlines.productline,
+    	products.productvendor
+	FROM
+    	productlines
+    	JOIN products ON productlines.productline = products.productline
+	WHERE
+    	productlines.productline IN (
+        SELECT
+            productline
+        FROM
+            products
+        GROUP BY
+            productline
+        HAVING
+            COUNT(DISTINCT productvendor) < 5
+    )
+	ORDER BY
+    	productlines.productline
+
+4. 
+	SELECT contactfirstname, contactlastname
+	FROM customers
+	WHERE state = (
+    	SELECT state
+    	FROM offices
+    	WHERE city = 'San Francisco'
+	)
+6. 
+	SELECT orderNumber, SUM(quantityOrdered * priceEach) AS cost
+	FROM orderdetails
+	GROUP BY orderNumber
+	ORDER BY cost DESC
+	LIMIT 1
+
+8. 
+	SELECT
+    employees.lastName,
+    employees.firstName,
+    SUM(orderdetails.quantityOrdered * orderdetails.priceEach) AS totalSales
+FROM
+    employees
+    JOIN customers ON employees.employeeNumber = customers.salesRepEmployeeNumber
+    JOIN orders ON customers.customerNumber = orders.customerNumber
+    JOIN orderdetails ON orders.orderNumber = orderdetails.orderNumber
+GROUP BY
+    employees.employeeNumber
+HAVING
+    SUM(orderdetails.quantityOrdered * orderdetails.priceEach) = (
+        SELECT
+            MAX(totalSales)
+        FROM
+            (
+                SELECT
+                    employees.employeeNumber,
+                    SUM(orderdetails.quantityOrdered * orderdetails.priceEach) AS totalSales
+                FROM
+                    employees
+                    JOIN customers ON employees.employeeNumber = customers.salesRepEmployeeNumber
+                    JOIN orders ON customers.customerNumber = orders.customerNumber
+                    JOIN orderdetails ON orders.orderNumber = orderdetails.orderNumber
+                GROUP BY
+                    employees.employeeNumber
+            ) AS salesByRep
+    )
+
+10. 
+	SELECT
+    	productname,
+    	msrp,
+    	(SELECT AVG(msrp) FROM products) AS avgMSRP
+	FROM
+    	products
+	WHERE
+    	msrp BETWEEN (SELECT AVG(msrp) FROM products) * 0.95 AND (SELECT AVG(msrp) 	FROM products) * 1.05
+	ORDER BY
+    	msrp
+
+	
+	

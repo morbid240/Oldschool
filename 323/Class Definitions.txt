@@ -1,0 +1,41 @@
+				Pizza
+A dish served at a restaurant that contains a unique name and toppings. For instance, the "meatocalypse" contains mostly meat. 
+
+Pizza Attributes: 
+	Name - Title given to pizza to identify what combination of toppings will 	be associated. 
+	GF: True or false for wether the pizza can be ordered with gluten free 	crust. 
+	Vegan: True or false for wether the pizza contains animal products. 
+	Price: The cost to order the pizza.
+	Calories: To enable customers to better decide what to order according to 	their dietary restrictions. 
+	Crust_Style: Type of crust can be hand tossed, brooklyn style, or with 	cheese 	stuffed crust. 
+
+
+
+				Record
+A media piece that contains a collection of music written by an artist during a specific period of time. It consists of at least one or more songs, and has a unique piece of art to represent the collection of media. The piece can be listened to on various forms of media such as a streaming service, or physical copies on CD or vinyl. 
+
+Record attributes: 
+	Title: Name of the record. 
+	Artist: Name to uniquely identify who made the record. 
+	Spotify: True or false to determine if the record is available on a popular 	streaming service. 
+	Release_Date: The time from which the record was published to the general 	public on a media platform. 
+	Tracks: The number of songs that are on the record. 
+	Cover_Artist: The name of the person who created the artwork for the 	record. 
+	
+
+
+
+				Motorcycle
+A two wheeled vehicle that can be purchased for the purpose of transportation. Each motorcycle's price is reflected by its unique attributes such as its condition. 
+
+Motorcycle attributes:  
+	Make: Manufacturer of the motorcycle such as honda, kawasaki, etc. 
+	Model: The unique type or version of a motorcycle associated with the make.
+	Year: Time period that the motorcycle was made. 
+	Condition: One word description to identify how much damage or wear and 	tear the motorcycle has, ranging from "new" to "poor."
+	Price: Number in cash value that the motorcycle is being offered for sale. 
+	Odometer: Number of miles that the motorcycle has been ridden since it was 	first manufactured. 
+	Color: What paint is on the motorcycle. 
+
+
+ 
